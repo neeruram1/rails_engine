@@ -6,11 +6,36 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
           null
         ]
       },
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/application_record.rb": {
         "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/invoice_item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           null
@@ -22,6 +47,9 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -29,11 +57,16 @@
         "lines": [
           1,
           1,
+          1,
+          1,
+          1,
           null
         ]
       },
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/transaction.rb": {
         "lines": [
+          1,
+          1,
           1,
           1,
           1,
@@ -88,6 +121,6 @@
         }
       }
     },
-    "timestamp": 1598802096
+    "timestamp": 1598804525
   }
 }

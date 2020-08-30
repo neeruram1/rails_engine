@@ -7,4 +7,9 @@ RSpec.describe Transaction, type: :model do
     it {should validate_presence_of :credit_card_expiration_date}
     it {should validate_presence_of :result}
   end
+
+  describe 'Relationships' do
+    it {should belong_to :invoice}
+    it {should have_one(:customer).through(:invoice)}
+  end
 end
