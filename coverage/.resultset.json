@@ -1,18 +1,22 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/mailers/application_mailer.rb": {
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/transaction.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
+          1,
+          null
+        ]
       },
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/application_record.rb": {
         "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
           0,
           0,
           0
@@ -57,6 +61,6 @@
         }
       }
     },
-    "timestamp": 1598796377
+    "timestamp": 1598799774
   }
 }
