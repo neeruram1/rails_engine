@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/customer.rb": {
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/invoice_item.rb": {
         "lines": [
           1,
           1,
@@ -34,23 +34,6 @@
           1,
           1,
           1,
-          null
-        ]
-      },
-      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/merchant.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/transaction.rb": {
-        "lines": [
-          1,
-          1,
           1,
           1,
           null
@@ -58,6 +41,41 @@
       },
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/mailers/application_mailer.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/customer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/transaction.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/merchant.rb": {
+        "lines": [
+          0,
+          0,
           0,
           0,
           0,
@@ -103,6 +121,6 @@
         }
       }
     },
-    "timestamp": 1598803316
+    "timestamp": 1598803731
   }
 }
