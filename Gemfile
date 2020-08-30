@@ -14,6 +14,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'simplecov', require: false
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
