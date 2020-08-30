@@ -58,5 +58,5 @@ require 'csv'
       end
     end
 
-    task :all => [:rebuild, :customers, :merchants, :items, :invoices, :invoice_items, :transactions ]
+    task :all => [:rebuild, :merchants, :customers, :invoices, :transactions, :items, :invoice_items,  ]
   end
