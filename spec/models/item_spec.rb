@@ -7,4 +7,8 @@ RSpec.describe Item, type: :model do
     it {should validate_presence_of :unit_price}
     it {should validate_numericality_of :unit_price}
   end
+
+  describe 'Relationships' do
+    it {should belong_to :merchant}
+  end
 end

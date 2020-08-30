@@ -22,11 +22,13 @@
           1,
           1,
           1,
+          1,
           null
         ]
       },
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/merchant.rb": {
         "lines": [
+          1,
           1,
           1,
           null
@@ -88,6 +90,6 @@
         }
       }
     },
-    "timestamp": 1598802096
+    "timestamp": 1598802808
   }
 }
