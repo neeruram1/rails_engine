@@ -8,7 +8,7 @@ describe "Items API" do
 
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
     expect(items.count).to eq(3)
   end
@@ -18,10 +18,10 @@ describe "Items API" do
 
     get "/api/v1/items/#{id}"
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
     expect(response).to be_successful
-    expect(item["id"]).to eq(id)
+    expect(item["id"]).to eq(id.to_s)
   end
 
   it "can create a new item" do
