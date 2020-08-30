@@ -32,7 +32,7 @@ require 'csv'
         Item.create!( {
           name: row['name'],
           description: row['description'],
-          unit_price: (row['unit_price'].to_f * 0.01),
+          unit_price: (row['unit_price'].to_f * 0.01).round(2),
           merchant_id: row['merchant_id'],
           created_at: row['created_at'],
           updated_at: row['updated_at']
@@ -58,7 +58,7 @@ require 'csv'
           item_id: row['item_id'],
           invoice_id: row['invoice_id'],
           quantity: row['quantity'],
-          unit_price: (row['unit_price'].to_f * 0.01),
+          unit_price: (row['unit_price'].to_f * 0.01).round(2),
           created_at: row['created_at'],
           updated_at: row['updated_at']
         } )

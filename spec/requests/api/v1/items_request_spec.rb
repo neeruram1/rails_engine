@@ -28,7 +28,7 @@ describe "Items API" do
     merchant_id = create(:merchant).id
     item_params = { name: "Banana", description: "I like bananas from the banana stand", merchant_id: merchant_id, unit_price: 5.0}
 
-    post "/api/v1/items", params: {item: item_params}
+    post "/api/v1/items", params: item_params
     item = Item.last
 
     expect(response).to be_successful
@@ -42,7 +42,7 @@ describe "Items API" do
     item_params = { name: "Chocolate Banana", description: "I like chocolate bananas from the banana stand", merchant_id: merchant_id, unit_price: 6.0}
 
 
-    put "/api/v1/items/#{id}", params: {item: item_params}
+    put "/api/v1/items/#{id}", params: item_params
     item = Item.find_by(id: id)
 
     expect(response).to be_successful
