@@ -16,6 +16,7 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :development do

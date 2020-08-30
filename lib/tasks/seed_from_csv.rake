@@ -29,7 +29,14 @@ require 'csv'
       csv_text = File.read('db/csv_seeds/items.csv')
       csv = CSV.parse(csv_text, :headers => true)
       csv.each do |row|
-        Item.create!(row.to_hash)
+        Item.create!( {
+          name: row['name'],
+          description: row['description'],
+          unit_price: (row['unit_price'].to_f * 0.01),
+          merchant_id: row['merchant_id'],
+          created_at: row['created_at'],
+          updated_at: row['updated_at']
+        } )
       end
     end
 
@@ -37,6 +44,7 @@ require 'csv'
       csv_text = File.read('db/csv_seeds/invoices.csv')
       csv = CSV.parse(csv_text, :headers => true)
       csv.each do |row|
+
         Invoice.create!(row.to_hash)
       end
     end
@@ -45,7 +53,15 @@ require 'csv'
       csv_text = File.read('db/csv_seeds/invoice_items.csv')
       csv = CSV.parse(csv_text, :headers => true)
       csv.each do |row|
-        InvoiceItem.create!(row.to_hash)
+        InvoiceItem.create!( {
+          id: row['id'],
+          item_id: row['item_id'],
+          invoice_id: row['invoice_id'],
+          quantity: row['quantity'],
+          unit_price: (row['unit_price'].to_f * 0.01),
+          created_at: row['created_at'],
+          updated_at: row['updated_at']
+        } )
       end
     end
 
