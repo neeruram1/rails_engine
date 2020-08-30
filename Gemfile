@@ -8,6 +8,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rspec-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'fast_jsonapi'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -16,6 +17,7 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :development do
