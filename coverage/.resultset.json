@@ -4,6 +4,8 @@
       "/Users/nirupamaram/turing/3module/rails_engine/rails_engine/app/models/customer.rb": {
         "lines": [
           1,
+          1,
+          1,
           null
         ]
       },
@@ -86,6 +88,6 @@
         }
       }
     },
-    "timestamp": 1598801998
+    "timestamp": 1598802096
   }
 }
