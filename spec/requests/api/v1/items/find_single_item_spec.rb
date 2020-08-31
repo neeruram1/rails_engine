@@ -3,6 +3,7 @@ describe 'Find a single item with specific criteria' do
   it "searches for item by name, case insensitive" do
     item1 = create(:item, name: 'Banana')
     item2 = create(:item, name: 'Chocolate')
+    item3 = create(:item, name: 'Nana')
 
     get "/api/v1/items/find?name=NANA"
 
