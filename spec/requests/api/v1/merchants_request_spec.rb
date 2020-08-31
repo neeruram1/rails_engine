@@ -23,8 +23,14 @@ describe 'Merchants API' do
     expect(merchant["id"]).to eq(id.to_s)
   end
 
-  xit "can create a new merchant" do
+  it "can create a new merchant" do
+    merchant_params = { name: "Bluth Corporation" }
 
+    post "/api/v1/merchants", params: merchant_params
+    merchant = Merchant.last
+
+    expect(response).to be_successful
+    expect(merchant.name).to eq(merchant_params[:name])
   end
 
   xit "can update an existing merchant" do
