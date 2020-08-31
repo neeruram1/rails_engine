@@ -9,6 +9,12 @@ require 'csv'
       Rake::Task['db:migrate'].execute
     end
 
+    task reset_key: :environment do
+      ActiveRecord::Base.connection.tables.each do |t|
+        ActiveRecord::Base.connection.reset_pk_sequence!(t)
+      end
+    end
+
     task merchants: :environment do
       csv_text = File.read('db/csv_seeds/merchants.csv')
       csv = CSV.parse(csv_text, :headers => true)
@@ -65,7 +71,6 @@ require 'csv'
       end
     end
 
-    desc "seed"
     task transactions: :environment do
       csv_text = File.read('db/csv_seeds/transactions.csv')
       csv = CSV.parse(csv_text, :headers => true)
@@ -74,5 +79,5 @@ require 'csv'
       end
     end
 
-    task :all => [:rebuild, :merchants, :customers, :invoices, :transactions, :items, :invoice_items,  ]
+    task :all => [:rebuild, :merchants, :customers, :invoices, :transactions, :items, :invoice_items, :reset_key ]
   end
