@@ -13,4 +13,14 @@ RSpec.describe Item, type: :model do
     it {should have_many :invoice_items}
     it {should have_many(:invoices).through(:invoice_items)}
   end
+
+  describe 'Methods' do
+      it ".find_single_item()" do
+        item1 = create(:item, name: 'Banana')
+        item2 = create(:item, name: 'Chocolate')
+        item3 = create(:item, name: 'Nana')
+
+      expect(Item.find_single_item("NANA")).to eq(item1)
+    end
+  end
 end
