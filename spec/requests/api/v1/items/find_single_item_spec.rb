@@ -5,7 +5,9 @@ describe 'Find a single item with specific criteria' do
     item2 = create(:item, name: 'Chocolate')
     item3 = create(:item, name: 'Nana')
 
-    get "/api/v1/items/find?name=NANA"
+    query = "NANA"
+
+    get "/api/v1/items/find?name=#{query}"
 
     expect(response).to be_successful
 

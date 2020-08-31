@@ -10,4 +10,14 @@ RSpec.describe Merchant, type: :model do
     it {should have_many :invoices}
     it {should have_many(:customers).through(:invoices)}
   end
+
+  describe 'Methods' do
+      it ".find_single_merchant()" do
+        merchant1 = create(:merchant, name: 'The Bluth Company')
+        merchant2 = create(:merchant, name: 'Dunder Mifflin Paper Company')
+        merchant3 = create(:merchant, name: "Honeydukes")
+
+      expect(Merchant.find_single_merchant("company")).to eq(merchant1)
+    end
+  end
 end
