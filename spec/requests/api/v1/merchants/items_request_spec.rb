@@ -1,14 +1,14 @@
 require 'rails_helper'
 describe 'Return the Items associated with specific Merchant' do
   it "returns all items associated with a merchant" do
-    create_list(:item, 10)
+    item = create(:item)
 
-    get "/api/v1/items/#{item.id}/merchant"
+    get "/api/v1/merchants/#{item.merchant.id}/items"
 
     expect(response).to be_successful
 
-    merchant = JSON.parse(response.body)["data"]
+    items = JSON.parse(response.body)["data"]
 
-    expect(merchant["id"]).to eq(item.merchant.id.to_s)
+    expect(items.first["attributes"]["name"]).to eq(item.name)
   end
 end
