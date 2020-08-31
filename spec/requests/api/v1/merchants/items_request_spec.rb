@@ -1,7 +1,7 @@
 require 'rails_helper'
-describe 'Return the Merchant associated with specific Item' do
-  it "returns merchant associated with an item" do
-    item = create(:item)
+describe 'Return the Items associated with specific Merchant' do
+  it "returns all items associated with a merchant" do
+    create_list(:item, 10)
 
     get "/api/v1/items/#{item.id}/merchant"
 
