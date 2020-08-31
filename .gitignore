@@ -20,5 +20,9 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
+
+#Ignore SimpleCov files
 /coverage.data
 /coverage/
+echo "coverage" >> .gitignore
+coverage
