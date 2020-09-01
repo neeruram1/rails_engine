@@ -25,5 +25,12 @@ RSpec.describe Item, type: :model do
       expect(Item.find_item(param)).to eq(item1)
       expect(Item.find_item(param1)).to eq(item2)
     end
+
+    it ".find_all_items()" do
+      create_list(:item, 10, name: "Chocolate Frog")
+      param = {"name"=>"COL"}
+
+      expect(Item.find_all_items(param).count).to eq(10)
+    end
   end
 end
