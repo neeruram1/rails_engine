@@ -9,6 +9,7 @@ RSpec.describe Merchant, type: :model do
     it {should have_many :items}
     it {should have_many :invoices}
     it {should have_many(:customers).through(:invoices)}
+    it {should have_many(:invoice_items).through(:invoices)}
   end
 
   describe 'Methods' do
@@ -27,6 +28,11 @@ RSpec.describe Merchant, type: :model do
       param = {"name"=>"blu"}
 
       expect(Merchant.find_all_merchants(param).count).to eq(34)
+    end
+
+    xit ".total_revenue" do
+
+
     end
   end
 end
