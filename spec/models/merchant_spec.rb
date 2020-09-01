@@ -15,9 +15,11 @@ RSpec.describe Merchant, type: :model do
       it ".find_single_merchant()" do
         merchant1 = create(:merchant, name: 'The Bluth Company')
         merchant2 = create(:merchant, name: 'Dunder Mifflin Paper Company')
-        merchant3 = create(:merchant, name: "Honeydukes")
+        param = {"name"=>"blu"}
+        param1 = {"name"=>"MIFF"}
 
-      expect(Merchant.find_merchant("company")).to eq(merchant1)
+      expect(Merchant.find_merchant(param)).to eq(merchant1)
+      expect(Merchant.find_merchant(param1)).to eq(merchant2)
     end
   end
 end

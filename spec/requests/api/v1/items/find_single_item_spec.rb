@@ -86,4 +86,20 @@ describe 'Find a single item with specific criteria' do
 
     expect(result["id"]).to eq(item2.id.to_s)
   end
+
+  it "searches for item by merchant_id" do
+    item1 = create(:item)
+
+    attribute = "merchant_id"
+    query = "#{item1.merchant.id}"
+
+    get "/api/v1/items/find?#{attribute}=#{query}"
+
+    expect(response).to be_successful
+    response.content_type == "application/json"
+
+    result = JSON.parse(response.body)["data"]
+
+    expect(result["id"]).to eq(item1.id.to_s)
+  end
 end
