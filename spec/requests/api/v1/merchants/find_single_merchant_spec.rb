@@ -6,8 +6,9 @@ describe 'Find a single merchant with specific criteria' do
     merchant3 = create(:merchant, name: "Honeydukes")
 
     query = "company"
+    attribute = "name"
 
-    get "/api/v1/merchants/find?name=#{query}"
+    get "/api/v1/merchants/find?#{attribute}=#{query}"
 
     expect(response).to be_successful
 

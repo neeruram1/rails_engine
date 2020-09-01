@@ -15,12 +15,15 @@ RSpec.describe Item, type: :model do
   end
 
   describe 'Methods' do
-      it ".find_single_item()" do
-        item1 = create(:item, name: 'Banana')
-        item2 = create(:item, name: 'Chocolate')
-        item3 = create(:item, name: 'Nana')
+    it ".find_item()" do
+      item1 = create(:item, name: 'Banana')
+      item2 = create(:item, description: 'Chocolate')
+      item3 = create(:item, name: 'Nana')
+      param = {"name"=>"NANA"}
+      param1 = {"description"=>"late"}
 
-      expect(Item.find_single_item("NANA")).to eq(item1)
+      expect(Item.find_item(param)).to eq(item1)
+      expect(Item.find_item(param1)).to eq(item2)
     end
   end
 end
