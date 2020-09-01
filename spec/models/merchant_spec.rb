@@ -10,6 +10,7 @@ RSpec.describe Merchant, type: :model do
     it {should have_many :invoices}
     it {should have_many(:customers).through(:invoices)}
     it {should have_many(:invoice_items).through(:invoices)}
+    it {should have_many(:transactions).through(:invoices)}
   end
 
   describe 'Methods' do
@@ -30,9 +31,16 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.find_all_merchants(param).count).to eq(34)
     end
 
-    xit ".total_revenue" do
+    it ".total_revenue" do
+      merchant = create(:merchant, name: 'The Bluth Company')
+      invoice_1 = create(:invoice, merchant_id: merchant.id)
+      invoice_2 = create(:invoice, merchant_id: merchant.id)
+      invoice_items_1 = create_list(:invoice_item, 10, invoice_id: invoice_1.id)
+      invoice_items_2 = create_list(:invoice_item, 5, invoice_id: invoice_2.id)
+      transactions_1 = create_list(:transaction, 10, invoice_id: invoice_1.id)
+      transactions_2 = create_list(:transaction, 10, invoice_id: invoice_2.id)
 
-
+      expect(merchant.total_revenue).to eq(2225.00)
     end
   end
 end

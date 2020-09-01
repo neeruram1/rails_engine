@@ -4,6 +4,7 @@ class Merchant < ApplicationRecord
   has_many :invoices
   has_many :customers, through: :invoices
   has_many :invoice_items, through: :invoices
+  has_many :transactions, through: :invoices
 
   scope :find_by_date, -> (param) {where("to_char(#{param.keys.first},'yyyy-mon-dd-HH-MI-SS') ILIKE ?", "%#{param.values.first}%")}
   scope :find_by_attribute, -> (param) {where("merchants.#{param.keys.first}::text ILIKE ?", "%#{param.values.first}%")}

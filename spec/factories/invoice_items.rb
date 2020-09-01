@@ -1,7 +1,7 @@
 require 'faker'
 
 FactoryBot.define do
-  factory :invoice_items do
+  factory :invoice_item do
     item
     invoice
     quantity { 15 }
