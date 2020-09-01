@@ -13,4 +13,24 @@ RSpec.describe Item, type: :model do
     it {should have_many :invoice_items}
     it {should have_many(:invoices).through(:invoice_items)}
   end
+
+  describe 'Methods' do
+    it ".find_item()" do
+      item1 = create(:item, name: 'Banana')
+      item2 = create(:item, description: 'Chocolate')
+      item3 = create(:item, name: 'Nana')
+      param = {"name"=>"NANA"}
+      param1 = {"description"=>"late"}
+
+      expect(Item.find_item(param)).to eq(item1)
+      expect(Item.find_item(param1)).to eq(item2)
+    end
+
+    it ".find_all_items()" do
+      create_list(:item, 10, name: "Chocolate Frog")
+      param = {"name"=>"COL"}
+
+      expect(Item.find_all_items(param).count).to eq(10)
+    end
+  end
 end

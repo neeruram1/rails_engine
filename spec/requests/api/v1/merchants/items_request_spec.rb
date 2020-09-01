@@ -6,6 +6,7 @@ describe 'Return the Items associated with specific Merchant' do
     get "/api/v1/merchants/#{item.merchant.id}/items"
 
     expect(response).to be_successful
+    response.content_type == "application/json"
 
     items = JSON.parse(response.body)["data"]
 
