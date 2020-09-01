@@ -6,13 +6,14 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
+  scope :find_merchant_by_date, -> (param) {where("to_char(#{param.keys.first},'yyyy-mon-dd-HH-MI-SS') ILIKE ?", "%#{param.values.first}%").first}
+  scope :find_by_attribute, -> (param) {where("items.#{param.keys.first}::text ILIKE ?", "%#{param.values.first}%").first}
+
   def self.find_item(param)
-    if param.keys.first == 'created_at'
-      Item.where("to_char(created_at,'yyyy-mon-dd-HH-MI-SS') ILIKE ?", "%#{param.values.first}%").first
-    elsif param.keys.first == 'updated_at'
-      Item.where("to_char(updated_at,'yyyy-mon-dd-HH-MI-SS') ILIKE ?", "%#{param.values.first}%").first
+    if param.keys.first == 'created_at' || param.keys.first == 'updated_at'
+      Item.find_merchant_by_date(param)
     else
-      Item.where("items.#{param.keys.first}::text ILIKE ?", "%#{param.values.first}%").first
+      Item.find_by_attribute(param)
     end
   end
 end

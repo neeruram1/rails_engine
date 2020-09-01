@@ -7,6 +7,7 @@ describe "Items API" do
     get '/api/v1/items'
 
     expect(response).to be_successful
+    response.content_type == "application/json"
 
     items = JSON.parse(response.body)["data"]
 
@@ -21,6 +22,8 @@ describe "Items API" do
     item = JSON.parse(response.body)["data"]
 
     expect(response).to be_successful
+    response.content_type == "application/json"
+
     expect(item["id"]).to eq(id.to_s)
   end
 
@@ -32,6 +35,8 @@ describe "Items API" do
     item = Item.last
 
     expect(response).to be_successful
+    response.content_type == "application/json"
+
     expect(item.name).to eq(item_params[:name])
   end
 
@@ -46,6 +51,7 @@ describe "Items API" do
     item = Item.find_by(id: id)
 
     expect(response).to be_successful
+    response.content_type == "application/json"
     expect(item.name).to_not eq(previous_name)
     expect(item.name).to eq("Chocolate Banana")
   end
@@ -55,7 +61,8 @@ describe "Items API" do
 
     expect{ delete "/api/v1/items/#{item.id}" }.to change(Item, :count).by(-1)
 
-    expect(response).to be_success
+    expect(response).to be_successful
+    response.content_type == "application/json"
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
