@@ -28,21 +28,19 @@ class Merchant < ApplicationRecord
   end
 
   def self.most_revenue(param)
-    Merchant.joins(:transactions)
-    .select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue")
+    Merchant.select("merchants.*, sum(quantity * unit_price) as revenue")
+    .joins(invoices: [:invoice_items, :transactions])
     .merge(Transaction.successful)
-    .joins(:invoices)
     .where("invoices.status = 'shipped'")
-    .joins(:invoice_items)
     .group(:id)
     .order("revenue desc")
     .limit(param)
   end
 
   def total_revenue
-    invoice_items.joins(:transactions)
+    invoice_items.joins(:transactions, :invoice)
     .merge(Transaction.successful)
-    .joins(:invoice).where("invoices.status = 'shipped'")
-    .sum("invoice_items.quantity * invoice_items.unit_price")
+    .where("invoices.status = 'shipped'")
+    .sum("quantity * unit_price")
   end
 end
