@@ -68,7 +68,7 @@ RSpec.describe Merchant, type: :model do
         transaction3 = create(:transaction, invoice: invoice3)
         transaction4 = create(:transaction, invoice: invoice4)
 
-        param = {"quantity"=>"2"}
+        param = 2
 
         expect(Merchant.most_revenue(param)).to eq([merchant1, merchant2])
       end

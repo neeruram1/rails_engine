@@ -31,7 +31,7 @@ describe "It outputs a list of merchants with most revenue" do
     expect(json["data"][0]["attributes"]["name"]).to eq(merchant1.name.to_s)
     expect(json["data"][0]["id"]).to eq(merchant1.id.to_s)
     expect(json["data"][1]["attributes"]["name"]).to eq(merchant2.name.to_s)
-    expect(json["data"][0]["id"]).to eq(merchant2.id.to_s)
+    expect(json["data"][1]["id"]).to eq(merchant2.id.to_s)
     expect(json["data"].length).to eq(2)
   end
 end

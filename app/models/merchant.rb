@@ -28,7 +28,6 @@ class Merchant < ApplicationRecord
   end
 
   def self.most_revenue(param)
-    num = param.values.first
     Merchant.joins(:transactions)
     .select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue")
     .merge(Transaction.successful)
@@ -37,7 +36,7 @@ class Merchant < ApplicationRecord
     .joins(:invoice_items)
     .group(:id)
     .order("revenue desc")
-    .limit(num)
+    .limit(param)
   end
 
   def total_revenue
