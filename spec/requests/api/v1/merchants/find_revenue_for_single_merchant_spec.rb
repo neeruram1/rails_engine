@@ -23,7 +23,7 @@ describe "Find a single merchant's total revenue" do
 
     json = JSON.parse(response.body)
 
-    expect(json["data"]["id"]).to eq(nil)
+    expect(json["data"]["id"]).to eq("null")
     expect(json["data"]["attributes"]["revenue"]).to eq(389.0)
   end
 end
