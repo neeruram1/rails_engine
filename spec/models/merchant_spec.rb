@@ -31,16 +31,21 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.find_all_merchants(param).count).to eq(34)
     end
 
-    it ".total_revenue" do
-      merchant = create(:merchant, name: 'The Bluth Company')
-      invoice_1 = create(:invoice, merchant_id: merchant.id)
-      invoice_2 = create(:invoice, merchant_id: merchant.id)
-      invoice_items_1 = create_list(:invoice_item, 10, invoice_id: invoice_1.id)
-      invoice_items_2 = create_list(:invoice_item, 5, invoice_id: invoice_2.id)
-      transactions_1 = create_list(:transaction, 10, invoice_id: invoice_1.id)
-      transactions_2 = create_list(:transaction, 10, invoice_id: invoice_2.id)
-
-      expect(merchant.total_revenue).to eq(2225.00)
+      it ".total_revenue" do
+        merchant = Merchant.create!(name: "The Bluth Company")
+        item = Item.create!(name: "Banana", unit_price: 10.75, description: "A banana", merchant: merchant)
+        item2 = Item.create!(name: "Chocolate Frog", unit_price: 4.75, description: "A chocolate frog", merchant: merchant)
+        customer = Customer.create!(first_name: "Michael", last_name: "Bluth")
+        customer2 = Customer.create!(first_name: "Job", last_name: "Bluth")
+        invoice = Invoice.create!(customer: customer, merchant: merchant, status: 'shipped')
+        invoice2 = Invoice.create!(customer: customer2, merchant: merchant, status: 'shipped')
+        invoice_item = InvoiceItem.create!(quantity: 30, unit_price: item.unit_price, item: item, invoice: invoice)
+        invoice_item2 = InvoiceItem.create!(quantity: 14, unit_price: item2.unit_price, item: item2, invoice: invoice2)
+        transaction = Transaction.create!(credit_card_number: 123, result: "success", invoice: invoice)
+        transaction1 = Transaction.create!(credit_card_number: 123, result: "failure", invoice: invoice)
+        transaction2 = Transaction.create!(credit_card_number: 123, result: "success", invoice: invoice2)
+        transaction3 = Transaction.create!(credit_card_number: 123, result: "failure", invoice: invoice2)
+        expect(merchant.total_revenue).to eq(389.0)
+      end
     end
   end
-end
