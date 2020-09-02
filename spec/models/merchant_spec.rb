@@ -46,6 +46,7 @@ RSpec.describe Merchant, type: :model do
         transaction2 = Transaction.create!(credit_card_number: 123, result: "success", invoice: invoice2)
         transaction3 = Transaction.create!(credit_card_number: 123, result: "failure", invoice: invoice2)
         expect(merchant.total_revenue).to eq(389.0)
+        expect((10.75 * 30) + (4.75 * 14)).to eq(389)
       end
     end
   end
