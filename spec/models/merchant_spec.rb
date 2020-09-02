@@ -49,7 +49,7 @@ RSpec.describe Merchant, type: :model do
         expect((10.75 * 30) + (4.75 * 14)).to eq(389)
       end
 
-      it ".highest_revenue" do
+      it ".most_revenue()" do
         merchant1 = create(:merchant)
         merchant2 = create(:merchant)
         customer1 = create(:customer)
@@ -64,11 +64,13 @@ RSpec.describe Merchant, type: :model do
         invoice_item3 = create(:invoice_item, invoice: invoice3, item: item2, unit_price: 63.50, quantity: 27)
         invoice_item4 = create(:invoice_item, invoice: invoice4, item: item2, unit_price: 34.00, quantity: 12)
         transaction1 = create(:transaction, invoice: invoice1)
-        transaction2 = create(:transaction, invoice: invoice1)
-        transaction3 = create(:transaction, invoice: invoice2)
-        transaction4 = create(:transaction, invoice: invoice2)
+        transaction2 = create(:transaction, invoice: invoice2)
+        transaction3 = create(:transaction, invoice: invoice3)
+        transaction4 = create(:transaction, invoice: invoice4)
 
-        expect(Merchant.highest_revenue).to eq(merchant1)
+        param = {"quantity"=>"2"}
+
+        expect(Merchant.most_revenue(param)).to eq([merchant1, merchant2])
       end
     end
   end
