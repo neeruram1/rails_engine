@@ -28,6 +28,6 @@ def self.find_all_merchants(param)
 end
 
   def total_revenue
-    invoice_items.joins(:transactions).merge(Transaction.successful).sum("invoice_items.quantity * invoice_items.unit_price")
+    invoice_items.joins(:transactions).merge(Transaction.successful).joins(:invoice).where("invoices.status = 'shipped'").sum("invoice_items.quantity * invoice_items.unit_price")
   end
 end
