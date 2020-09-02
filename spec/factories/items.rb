@@ -5,6 +5,6 @@ FactoryBot.define do
     merchant
     name { Faker::Commerce.unique.product_name }
     description { Faker::Lorem.unique.paragraph }
-    unit_price { Faker::Commerce.unique.price }
+    unit_price { 12.50 }
   end
 end

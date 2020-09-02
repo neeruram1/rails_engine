@@ -48,5 +48,27 @@ RSpec.describe Merchant, type: :model do
         expect(merchant.total_revenue).to eq(389.0)
         expect((10.75 * 30) + (4.75 * 14)).to eq(389)
       end
+
+      it ".highest_revenue" do
+        merchant1 = create(:merchant)
+        merchant2 = create(:merchant)
+        customer1 = create(:customer)
+        item1 = create(:item, merchant: merchant1)
+        item2 = create(:item, merchant: merchant2)
+        invoice1 = create(:invoice, customer: customer1, merchant: merchant1)
+        invoice2 = create(:invoice, customer: customer1, merchant: merchant1)
+        invoice3 = create(:invoice, customer: customer1, merchant: merchant2)
+        invoice4 = create(:invoice, customer: customer1, merchant: merchant2)
+        invoice_item1 = create(:invoice_item, invoice: invoice1, item: item1, unit_price: 45.78, quantity: 40)
+        invoice_item2 = create(:invoice_item, invoice: invoice2, item: item1, unit_price: 45.78, quantity: 100)
+        invoice_item3 = create(:invoice_item, invoice: invoice3, item: item2, unit_price: 63.50, quantity: 27)
+        invoice_item4 = create(:invoice_item, invoice: invoice4, item: item2, unit_price: 34.00, quantity: 12)
+        transaction1 = create(:transaction, invoice: invoice1)
+        transaction2 = create(:transaction, invoice: invoice1)
+        transaction3 = create(:transaction, invoice: invoice2)
+        transaction4 = create(:transaction, invoice: invoice2)
+
+        expect(Merchant.highest_revenue).to eq(merchant1)
+      end
     end
   end

@@ -2,6 +2,6 @@ require 'faker'
 
 FactoryBot.define do
   factory :merchant do
-    name { "The Bluth Company" }
+    name { Faker::Company.name }
   end
 end
