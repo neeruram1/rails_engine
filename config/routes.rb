@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get "/:id/items", to: 'items#index'
         get "/find", to: 'search#show'
         get "/find_all", to: 'search#index'
+        get "/:id/revenue", to: 'revenue#show'
       end
 
       resources :items, only: [:index, :show, :create, :update, :destroy]
