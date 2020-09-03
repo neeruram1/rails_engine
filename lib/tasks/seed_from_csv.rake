@@ -36,6 +36,7 @@ require 'csv'
       csv = CSV.parse(csv_text, :headers => true)
       csv.each do |row|
         Item.create!( {
+          id: row['id'],
           name: row['name'],
           description: row['description'],
           unit_price: (row['unit_price'].to_f * 0.01).round(2),
