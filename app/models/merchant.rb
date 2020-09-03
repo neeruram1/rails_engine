@@ -40,6 +40,7 @@ class Merchant < ApplicationRecord
   def self.most_items_sold(param)
     Merchant.select("merchants.*, sum(quantity) as items_sold")
     .joins(invoices: [:invoice_items, :transactions])
+    .where("invoices.status = 'shipped'")
     .merge(Transaction.successful).group(:id)
     .order("items_sold desc").limit(param)
   end
