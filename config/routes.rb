@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         get "/most_items", to: 'items_sold#index'
       end
 
+      resources :revenue, only: [:index]
       resources :items, only: [:index, :show, :create, :update, :destroy]
       resources :merchants, only: [:index, :show, :create, :update, :destroy]
     end

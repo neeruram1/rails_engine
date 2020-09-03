@@ -1,6 +1,6 @@
 require 'rails_helper'
-describe 'Revenue facade methods' do
-  it "revenue_by_date_range()" do
+describe "Find a single merchant's total revenue" do
+  it "returns the total revenue for a single merchant" do
     merchant1 = create(:merchant)
     merchant2 = create(:merchant)
     customer1 = create(:customer)
@@ -19,6 +19,17 @@ describe 'Revenue facade methods' do
     transaction3 = create(:transaction, invoice: invoice3)
     transaction4 = create(:transaction, invoice: invoice4)
 
-    expect(RevenueFacade.revenue_by_date_range("2020-09-03", "2020-09-04").class).to eq(Revenue)
+    start_date = "2020-09-03"
+    end_date = "2020-09-04"
+
+    get "/api/v1/revenue?start=#{start_date}&end=#{end_date}"
+
+    expect(response).to be_successful
+    response.content_type == "application/json"
+
+    json = JSON.parse(response.body)
+
+    expect(json["data"]["id"]).to eq(nil)
+    expect(json["data"]["attributes"]["revenue"]).to eq(6817.2)
   end
 end
